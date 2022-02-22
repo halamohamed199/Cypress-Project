@@ -1,14 +1,13 @@
+import {OpenWebsite} from "../../../pages/OpenWebsite"
+import {SearchForDoctor} from "../../../pages/SearchForDoctor"
 import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 
-// search_textField = '#search-text-desk'
-// Search_select_result = '#search-text-desk-item-0'
+const openWebsite = new OpenWebsite()
+const searchForDoctor = new SearchForDoctor();
 
 Given('I open the HeliumDoc website', function () {
-    cy.visit('https://www.heliumdoc.com/')
+    openWebsite.naviagte()
 });
-When('Enter doctor name', function () {
-    cy.get('#search-text-desk').type('Dr. Ahmed Achoth')
-});
-Then('Click Search', function () {
-    cy.get('#search-text-desk-item-0').click()
+Then('Search for doctor name', function () {
+    searchForDoctor.searchForDoctor('Ahmed Achoth')
 });

@@ -1,19 +1,14 @@
+import {OpenWebsite} from "../../../pages/OpenWebsite"
+import {PopularSpecialtyLinks} from "../../../pages/PopularSpecialtyLinks"
 import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 
+const openWebsite = new OpenWebsite()
+const popularLinks = new PopularSpecialtyLinks()
+
 Given('I open the HeliumDoc website', function () {
-    cy.visit('https://www.heliumdoc.com/')
-});
+    openWebsite.naviagte()
+})
 
 Then('Open popular specialty Links', function () {
-    
-    const pages = ['Obstetricians & Gynecologists','Pediatricians', 'General Doctors'
-    ,'Dentists','Skin Doctors','Eye Doctors']
-
-    pages.forEach(page => {
-    cy.contains(page).click({ force: true })
-    cy.go('back')
-
-  })
-    
-
+    popularLinks.openlinks()
 });

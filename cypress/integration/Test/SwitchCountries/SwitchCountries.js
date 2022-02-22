@@ -1,11 +1,16 @@
+import {OpenWebsite} from "../../../pages/OpenWebsite"
+import {SwitchCountries} from "../../../pages/SwitchCountries"
 import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 
+const openWebsite = new OpenWebsite()
+const switchCountries = new SwitchCountries()
+
 Given('I open the HeliumDoc website', function () {
-    cy.visit('https://www.heliumdoc.com/')
+    openWebsite.naviagte()
 });
 When('Open countries dropdown', function () {
-    cy.get('#languageDropdownContainer').click()
+    switchCountries.openCountriesDropDown()
 });
 Then('Select country', function () {
-    cy.get(':nth-child(2) > .dropdown-item').click()
+    switchCountries.selectCountry("UAE") 
 });

@@ -1,20 +1,20 @@
+import {OpenWebsite} from "../../../pages/OpenWebsite"
+import {SearchWithSpecialtyAndArea} from "../../../pages/SearchWithSpecialtyAndArea"
 import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 
-// search_textField = '#search-text-desk'
-// Search_select_result = '#search-text-desk-item-0'
+const openWebsite = new OpenWebsite()
+const searchWithSpecialtyAndArea = new SearchWithSpecialtyAndArea()
 
 Given('I open the HeliumDoc website', function () {
-    cy.visit('https://www.heliumdoc.com/')
+    openWebsite.naviagte()
 });
 When('Select specialty from dropdown', function () {
-    cy.get('#specTrigger').click()
-    cy.get('[tabindex="44"]').click()
+    searchWithSpecialtyAndArea.selectSpecialty("Pediatric Surgeon")
 });
 And('Select area from dropdown', function () {
-    cy.get('#areaTrigger').click()
-    cy.get('#areaOverlay > .generic-overlay > .overlay-options-container > [tabindex="23"]').click()
+   searchWithSpecialtyAndArea.selectArea("Bin Omran")
 });
 
 Then('Click Search', function () {
-    cy.get('#homepageSearchButton').click()
+   searchWithSpecialtyAndArea.search()
 })
