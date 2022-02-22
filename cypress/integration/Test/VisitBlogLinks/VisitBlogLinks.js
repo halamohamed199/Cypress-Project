@@ -9,13 +9,14 @@ When('Visit blog links', function () {
     cy.get('.blog-posts-container > .row > :nth-child(3)').should('be.visible')
 });
 Then('Open Blog Links', function () {
-    // cy.get('.blog-posts-container > .row > :nth-child(1)')
-    // .invoke('removeAttr','target').click
-    cy.get(':nth-child(1) > .blog-post > .blog-post-text-container').should('have.attr', 'href')
-    .then((href) => {
-      cy.visit(href)
-    })
-    // cy.get(':nth-child(1) > .blog-post > .clip-img > a > .blog-post-img').click
-// var link =  cy.get(':nth-child(1) > .blog-post > .blog-post-text-container').href
-// cy.visit(link)
+    cy.get(':nth-child(1) > .blog-post > .blog-post-text-container')
+    .invoke('removeAttr', 'target').click()
+    cy.go('back')
+    cy.get(':nth-child(2) > .blog-post > .blog-post-text-container')
+    .invoke('removeAttr','target').click()
+    cy.go('back')
+    cy.get(':nth-child(3) > .blog-post > .blog-post-text-container')
+    .invoke('removeAttr','target').click()
+    cy.go('back')
+
 });
