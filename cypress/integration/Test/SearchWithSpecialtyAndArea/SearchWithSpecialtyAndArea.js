@@ -5,14 +5,16 @@ import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 const openWebsite = new OpenWebsite()
 const searchWithSpecialtyAndArea = new SearchWithSpecialtyAndArea()
 
-Given('I open the HeliumDoc website', function () {
-    openWebsite.naviagte()
+Given('I open the HeliumDoc website {string}', (url) => {
+    openWebsite.naviagte(url)
+})
+
+When('Select specialty from dropdown {string}', (specialtyName) => {
+    searchWithSpecialtyAndArea.selectSpecialty(specialtyName)
 });
-When('Select specialty from dropdown', function () {
-    searchWithSpecialtyAndArea.selectSpecialty("Pediatric Surgeon")
-});
-And('Select area from dropdown', function () {
-   searchWithSpecialtyAndArea.selectArea("Bin Omran")
+
+And('Select area from dropdown {string}', (areaName) => {
+   searchWithSpecialtyAndArea.selectArea(areaName)
 });
 
 Then('Click Search', function () {

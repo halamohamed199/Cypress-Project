@@ -5,8 +5,8 @@ import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 const openWebsite = new OpenWebsite()
 const popularLinks = new PopularSpecialtyLinks()
 
-Given('I open the HeliumDoc website', function () {
-    openWebsite.naviagte()
+Given('I open the HeliumDoc website {string}', (url) => {
+    openWebsite.naviagte(url)
 })
 
 Then('Open popular specialty Links', function () {

@@ -2,8 +2,8 @@
 
 export class OpenWebsite{
 
-    naviagte(){
-        cy.visit('https://www.heliumdoc.com/')
+    naviagte(url){
+        cy.visit(url)
     }
    
 }

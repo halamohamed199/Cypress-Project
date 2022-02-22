@@ -5,12 +5,14 @@ import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 const openWebsite = new OpenWebsite()
 const switchCountries = new SwitchCountries()
 
-Given('I open the HeliumDoc website', function () {
-    openWebsite.naviagte()
-});
+Given('I open the HeliumDoc website {string}', (url) => {
+    openWebsite.naviagte(url)
+})
+
 When('Open countries dropdown', function () {
     switchCountries.openCountriesDropDown()
 });
-Then('Select country', function () {
-    switchCountries.selectCountry("UAE") 
+
+Then('Select country {string}', (countryName) =>  {
+    switchCountries.selectCountry(countryName) 
 });

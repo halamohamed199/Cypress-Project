@@ -6,9 +6,9 @@ import { Given , And , Then , When} from "cypress-cucumber-preprocessor/steps";
 const openWebsite = new OpenWebsite()
 const fb = new OpenFaceBook()
 
-Given('I open the HeliumDoc website', function () {
-    openWebsite.naviagte()
-});
+Given('I open the HeliumDoc website {string}', (url) => {
+    openWebsite.naviagte(url)
+})
 
 Then('Click on facebook icon', function () {
    fb.openFB()
